@@ -1,157 +1,301 @@
 :root {
-        --background-color: #111111; /* Softer black */
-        --container-bg: rgba(20, 20, 20, 0.6); /* Softer semi-transparent black */
-        --container-border: rgba(255, 255, 255, 0.1); /* Subtle border */
-        --container-shadow: rgba(0, 0, 0, 0.2); /* Soft shadow */
-        --input-bg: rgba(30, 30, 30, 0.7); /* Softer semi-transparent black */
-        --input-color: #ffffff; /* White text */
-        --input-placeholder: rgba(255, 255, 255, 0.5); /* Light placeholder text */
-        --input-shadow: rgba(0, 0, 0, 0.3); /* Neumorphic inset shadow */
-        --input-focus-shadow: rgba(255, 255, 255, 0.1); /* Focus effect */
-        --button-bg: rgba(30, 30, 30, 0.7); /* Softer semi-transparent black */
-        --button-hover-bg: rgba(40, 40, 40, 0.8); /* Slightly darker on hover */
-        --button-shadow: rgba(0, 0, 0, 0.3); /* Neumorphic shadow */
-        --button-active-shadow: rgba(255, 255, 255, 0.05); /* Active pressed effect */
-        --heading-color: #ffffff; /* White text */
-        --heading-shadow: rgba(0, 0, 0, 0.2); /* Subtle text shadow */
-      }
+  --background-color: #111111;
+  --container-bg: rgba(20, 20, 20, 0.6);
+  --container-border: rgba(255, 255, 255, 0.1);
+  --container-shadow: rgba(0, 0, 0, 0.2);
+  --input-bg: rgba(30, 30, 30, 0.7);
+  --input-color: #ffffff;
+  --input-placeholder: rgba(255, 255, 255, 0.5);
+  --input-shadow: rgba(0, 0, 0, 0.3);
+  --input-focus-shadow: rgba(255, 255, 255, 0.1);
+  --button-bg: rgba(30, 30, 30, 0.7);
+  --button-hover-bg: rgba(40, 40, 40, 0.8);
+  --button-shadow: rgba(0, 0, 0, 0.3);
+  --button-active-shadow: rgba(255, 255, 255, 0.05);
+  --heading-color: #ffffff;
+  --heading-shadow: rgba(0, 0, 0, 0.2);
+  --phrase-bg: rgba(30, 30, 30, 0.5);
+  --phrase-hover: rgba(60, 60, 60, 0.7);
+  --modal-bg: rgba(20, 20, 20, 0.95);
+}
 
-      /* Full Background Image */
-      body {
-        font-family: Arial, sans-serif;
-        background-color: var(--background-color);
-        background-image: url("background.png"); /* Add your background image */
-        background-size: cover; /* Ensures the image covers the entire body */
-        background-repeat: no-repeat; /* Prevents the image from repeating */
-        background-position: center; /* Centers the image */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        position: relative; /* For footer positioning */
-      }
+/* Full Background Image */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  background-image: url("background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+}
 
-      /* Glassmorphic Container */
-      .search-container {
-        text-align: center;
-        background: var(--container-bg);
-        backdrop-filter: blur(10px); /* Frosted glass effect */
-        padding: 40px;
-        border-radius: 16px;
-        border: 1px solid var(--container-border);
-        box-shadow: 0 8px 32px var(--container-shadow);
-      }
+.container {
+  display: flex;
+  width: 800px;
+  gap: 20px;
+}
 
-      /* Logo Style */
-      .logo {
-        width: 280px; /* Increased logo size to nearly match the search bar width */
-        height: auto;
-        margin-bottom: 20px;
-        display: block; /* Ensure the logo is treated as a block element */
-        margin-left: auto; /* Center the logo horizontally */
-        margin-right: auto;
-      }
+/* Phrases Panel */
+.phrases-container {
+  width: 200px;
+  background: var(--container-bg);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid var(--container-border);
+  box-shadow: 0 8px 32px var(--container-shadow);
+  display: flex;
+  flex-direction: column;
+}
 
-      /* Neumorphic Textarea Field */
-      textarea {
-        width: 300px;
-        min-height: 80px; /* Minimum height for 3 rows */
-        padding: 12px;
-        margin-top: 20px;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        background: var(--input-bg);
-        color: var(--input-color);
-        box-shadow: inset 4px 4px 6px var(--input-shadow), inset -4px -4px 6px var(--button-active-shadow);
-        resize: vertical; /* Allow vertical resizing */
-        font-family: Arial, sans-serif;
-      }
+.phrases-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  color: var(--heading-color);
+}
 
-      textarea::placeholder {
-        color: var(--input-placeholder);
-      }
+.phrases-list {
+  overflow-y: auto;
+  max-height: 300px;
+}
 
-      textarea:focus {
-        outline: none;
-        box-shadow: inset 4px 4px 6px var(--input-shadow), inset -4px -4px 6px var(--button-active-shadow),
-          0 0 0 2px var(--input-focus-shadow);
-      }
+.phrase-item {
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  background: var(--phrase-bg);
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--input-color);
+  transition: background 0.2s;
+}
 
-      /* Neumorphic Button */
-      button {
-        padding: 12px 24px;
-        background: var(--button-bg);
-        color: var(--input-color);
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 20px;
-        box-shadow: 4px 4px 8px var(--button-shadow), -4px -4px 8px var(--button-active-shadow);
-        transition: all 0.3s ease;
-      }
+.phrase-item:hover {
+  background: var(--phrase-hover);
+}
 
-      button:hover {
-        background: var(--button-hover-bg);
-        box-shadow: 2px 2px 4px var(--button-shadow), -2px -2px 4px var(--button-active-shadow);
-      }
+.edit-btn {
+  background: var(--button-bg);
+  color: var(--input-color);
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 2px 2px 4px var(--button-shadow), -2px -2px 4px var(--button-active-shadow);
+}
 
-      button:active {
-        box-shadow: inset 4px 4px 6px var(--button-shadow), inset -4px -4px 6px var(--button-active-shadow);
-      }
+.edit-btn:hover {
+  background: var(--button-hover-bg);
+}
 
-      /* Loading Spinner */
-      .loader {
-        border: 4px solid rgba(255, 255, 255, 0.3);
-        border-top: 4px solid #ffffff;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        animation: spin 1s linear infinite;
-        display: none; /* Hidden by default */
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
+/* Glassmorphic Container */
+.search-container {
+  text-align: center;
+  background: var(--container-bg);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid var(--container-border);
+  box-shadow: 0 8px 32px var(--container-shadow);
+  flex: 1;
+}
 
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
+/* Logo Style */
+.logo {
+  width: 280px;
+  height: auto;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-      /* Footer Style */
-      footer {
-        position: absolute;
-        bottom: 10px;
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.9rem;
-      }
+/* Neumorphic Textarea Field */
+textarea {
+  width: 300px;
+  min-height: 80px;
+  padding: 12px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background: var(--input-bg);
+  color: var(--input-color);
+  box-shadow: inset 4px 4px 6px var(--input-shadow), inset -4px -4px 6px var(--button-active-shadow);
+  resize: vertical;
+  font-family: Arial, sans-serif;
+}
 
-      footer a {
-        color: rgba(255, 255, 255, 0.9);
-        text-decoration: none;
-      }
+textarea::placeholder {
+  color: var(--input-placeholder);
+}
 
-      footer a:hover {
-        text-decoration: underline;
-      }
+textarea:focus {
+  outline: none;
+  box-shadow: inset 4px 4px 6px var(--input-shadow), inset -4px -4px 6px var(--button-active-shadow),
+    0 0 0 2px var(--input-focus-shadow);
+}
 
-      /* Built On Date Style */
-      .built-on {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        color: #000000; /* High contrast dark text */
-        font-size: 0.8rem; /* Small text */
-        background-color: rgba(255, 255, 255, 0.9); /* High contrast background */
-        padding: 5px 10px;
-        border-radius: 4px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
+/* Neumorphic Button */
+button {
+  padding: 12px 24px;
+  background: var(--button-bg);
+  color: var(--input-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  box-shadow: 4px 4px 8px var(--button-shadow), -4px -4px 8px var(--button-active-shadow);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: var(--button-hover-bg);
+  box-shadow: 2px 2px 4px var(--button-shadow), -2px -2px 4px var(--button-active-shadow);
+}
+
+button:active {
+  box-shadow: inset 4px 4px 6px var(--button-shadow), inset -4px -4px 6px var(--button-active-shadow);
+}
+
+/* Loading Spinner */
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #ffffff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Footer Style */
+footer {
+  position: absolute;
+  bottom: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Built On Date Style */
+.built-on {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #000000;
+  font-size: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 5px 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--modal-bg);
+  padding: 25px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--container-border);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  color: var(--heading-color);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--input-color);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.phrase-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid var(--container-border);
+  background: var(--input-bg);
+  color: var(--input-color);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.modal-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #4a6fa5;
+  color: white;
+}
+
+.btn-danger {
+  background: #c23b3b;
+  color: white;
+}
+
+.btn-secondary {
+  background: var(--button-bg);
+  color: var(--input-color);
+}
+
+.phrases-container, .modal {
+    overflow-y: auto;
+}
