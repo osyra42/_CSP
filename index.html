@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <title>CSP - Perplexity</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <!-- Built On Date -->
+    <div class="built-on">Built on: 2025 Jan 17</div>
+
+    <div class="search-container">
+      <!-- Logo -->
+      <img src="logo.svg" alt="Perplexity AI Logo" class="logo" />
+      
+      <!-- Textarea -->
+      <textarea 
+        id="searchQuery" 
+        placeholder="Enter your search query..." 
+        autofocus
+        rows="3"
+      ></textarea>
+      
+      <!-- Search Button -->
+      <button onclick="performSearch()">Search</button>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loader" id="loader"></div>
+
+    <!-- Footer -->
+    <footer>
+      <p>Powered by <a href="https://www.perplexity.ai" target="_blank">Perplexity</a></p>
+    </footer>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
