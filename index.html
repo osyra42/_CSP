@@ -11,20 +11,31 @@
     <!-- Built On Date -->
     <div class="built-on">Built on: 2025 Jan 17</div>
 
-    <div class="search-container">
-      <!-- Logo -->
-      <img src="logo.svg" alt="Perplexity AI Logo" class="logo" />
-      
-      <!-- Textarea -->
-      <textarea 
-        id="searchQuery" 
-        placeholder="Enter your search query..." 
-        autofocus
-        rows="3"
-      ></textarea>
-      
-      <!-- Search Button -->
-      <button onclick="performSearch()">Search</button>
+    <div class="container">
+      <!-- Phrases Panel -->
+      <div class="phrases-container">
+        <div class="phrases-header">
+          <h3>Quick Phrases</h3>
+          <button class="edit-btn" id="editPhrasesBtn">Modify</button>
+        </div>
+        <div class="phrases-list" id="phrasesList">
+          <!-- Phrases will be added here dynamically -->
+        </div>
+      </div>
+
+      <!-- Search Container -->
+      <div class="search-container">
+        <img src="logo.svg" alt="Perplexity AI Logo" class="logo" />
+        
+        <textarea 
+          id="searchQuery" 
+          placeholder="Enter your search query..." 
+          autofocus
+          rows="3"
+        ></textarea>
+        
+        <button onclick="performSearch()">Search</button>
+      </div>
     </div>
 
     <!-- Loading Spinner -->
@@ -34,6 +45,27 @@
     <footer>
       <p>Powered by <a href="https://www.perplexity.ai" target="_blank">Perplexity</a></p>
     </footer>
+
+    <!-- Edit Phrases Modal -->
+    <div class="modal" id="editModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Edit Phrases</h2>
+          <button class="modal-close" id="closeModal">&times;</button>
+        </div>
+        <div id="editPhrasesContainer">
+          <!-- Phrases to edit will be added here -->
+        </div>
+        <div>
+          <input type="text" id="newPhraseInput" class="phrase-input" placeholder="Add new phrase...">
+          <button class="edit-btn" id="addPhraseBtn" style="width: 100%">Add Phrase</button>
+        </div>
+        <div class="modal-buttons">
+          <button class="modal-btn btn-secondary" id="cancelEditBtn">Cancel</button>
+          <button class="modal-btn btn-primary" id="savePhrasesBtn">Save Changes</button>
+        </div>
+      </div>
+    </div>
 
     <script src="scripts.js"></script>
   </body>
