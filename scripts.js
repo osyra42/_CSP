@@ -1,7 +1,5 @@
 
 document.querySelector('#version').textContent = `${version.trim()}`;
-// Call this function when the page loads
-document.addEventListener('DOMContentLoaded', updateBuiltOnDate);
 
 // Sample initial phrases
 let phrases = [
